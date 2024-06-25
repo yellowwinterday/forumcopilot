@@ -19,6 +19,7 @@ class Manipulator extends XFCP_Manipulator
             if( FCConfig::imageEnable() ){
                 $ImageApi = new ImageApi(\ForumCopilot\Common\FCConfig::apikey());
                 $res = $ImageApi->checkImage($upload);
+
                 if($res['nsfw_reason'] ){
 
 //                    $reasons = [
@@ -34,7 +35,7 @@ class Manipulator extends XFCP_Manipulator
 //                            break;
 //                        }
 //                    }
-
+                    $error = $res['nsfw_reason'];
                     ForumCopilotLog::logMessage('ForumCopilot banned image upload:' . $res['nsfw_reason'],\XF::getRootDirectory().'/forumCopilotLog/checkImage.log');
                     return;
                 }

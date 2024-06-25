@@ -1,0 +1,14 @@
+{
+    "XF-Attachment-Manipulator_ForumCopilot-XF-Attachment-Manipulator.json": {
+        "hash": "88952bd2bbd1e360d2fd781d82e4a0f4"
+    },
+    "XF-Attachment-Post_ForumCopilot-XF-Attachment-Post.json": {
+        "hash": "f24a26f337d301e18bcc0610089eda44"
+    },
+    "XF-Pub-Controller-Forum_ForumCopilot-XF-Pub-Controller-Forum.json": {
+        "hash": "d61b2a98e0035f950ae93cdd3a86b779"
+    },
+    "XF-Pub-Controller-Thread_ForumCopilot-XF-Pub-Controller-Thread.json": {
+        "hash": "7a49975d3fe3aaa102ec6031f07c787b"
+    }
+}
