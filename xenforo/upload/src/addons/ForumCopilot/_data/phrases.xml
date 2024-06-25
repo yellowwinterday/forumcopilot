@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<phrases>
+  <phrase title="option.fc_apikey" version_id="10" version_string="1.0"><![CDATA[Access key]]></phrase>
+  <phrase title="option.fc_apikey_description" version_id="10"><![CDATA[Enter your OpenAI API key.]]></phrase>
+  <phrase title="option.fc_apikey_title" version_id="0"><![CDATA[OpenAI API Key]]></phrase>
+  <phrase title="option.fc_explain_flagged_reason" version_id="10" version_string="1.0"><![CDATA[Explain Flagged Reason]]></phrase>
+  <phrase title="option.fc_explain_flagged_reason_description" version_id="10"><![CDATA[ForumCopilot will explain why a content is being flagged.]]></phrase>
+  <phrase title="option.fc_explain_flagged_reason_title" version_id="10"><![CDATA[Explain Flagged Reason]]></phrase>
+  <phrase title="option.fc_moderate_nsfw_image" version_id="10" version_string="1.0"><![CDATA[Moderate NSFW Image]]></phrase>
+  <phrase title="option.fc_moderate_nsfw_image_description" version_id="10"><![CDATA[ForumCopilot will check all image attachments for all users and flag/remove problematic images.]]></phrase>
+  <phrase title="option.fc_moderate_nsfw_image_title" version_id="0"><![CDATA[Moderate NSFW Image]]></phrase>
+  <phrase title="option.fc_moderate_post_content" version_id="10" version_string="1.0"><![CDATA[Moderate Post Content]]></phrase>
+  <phrase title="option.fc_moderate_post_content_description" version_id="0"><![CDATA[Forum Copilot will check the post text content from all users and flag for potentially problematic content.]]></phrase>
+  <phrase title="option.fc_moderate_post_content_title" version_id="0"><![CDATA[Moderate Post Content]]></phrase>
+  <phrase title="option.fc_recommend_forumcopilot" version_id="10" version_string="1.0"><![CDATA[Recommend ForumCopilot]]></phrase>
+  <phrase title="option.fc_recommend_forumcopilot_description" version_id="0"><![CDATA[Place a small “Powered by Forum Copilot” link in the footer. We really appreciate it!]]></phrase>
+  <phrase title="option.fc_recommend_forumcopilot_title" version_id="0"><![CDATA[Recommend Forum Copilot]]></phrase>
+  <phrase title="option_explain.fc_apikey" version_id="10" version_string="1.0"><![CDATA[Sign up at <a href='https://forumcopilot.com/'>ForumCopilot.com</a> to get access key.]]></phrase>
+  <phrase title="option_explain.fc_explain_flagged_reason" version_id="10" version_string="1.0"><![CDATA[ForumCopilot will explain why a content is being flagged.]]></phrase>
+  <phrase title="option_explain.fc_moderate_nsfw_image" version_id="23" version_string="2.3"><![CDATA[ForumCopilot will check all image attachments for all users and flag/remove problematic images.]]></phrase>
+  <phrase title="option_explain.fc_moderate_post_content" version_id="23" version_string="2.3"><![CDATA[Forum Copilot will check content of users with fewer than 3 messages on your forum]]></phrase>
+  <phrase title="option_explain.fc_recommend_forumcopilot" version_id="14" version_string="1.4"><![CDATA[Place a small "Powered by Forum Copilot" link in the footer. We really appreciate it!]]></phrase>
+  <phrase title="option_group.forumcopilot" version_id="10" version_string="1.0"><![CDATA[ForumCopilot]]></phrase>
+  <phrase title="option_group_description.forumcopilot" version_id="10" version_string="1.0"><![CDATA[ForumCopilot Option]]></phrase>
+</phrases>
