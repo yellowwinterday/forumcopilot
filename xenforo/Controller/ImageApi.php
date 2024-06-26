@@ -129,7 +129,7 @@ class ImageApi extends \ForumCopilot\Base\BaseApi
 
     public function callGPT4WithImage($imageUrl)
     {
-        $prompt = "Check and rate the image in the following categories: prof (Profanity or vulgar language), nude (Nudity or sexually explicit content), viol (Graphic violence or gore), off (Inappropriate or offensive imagery). For each category, provide a reason if the value is higher than 0. Return the results as a JSON object with both ratings and reasons.";
+        $prompt = "Check and rate the image in the following categories: nude (Nudity or sexually explicit content). For each category, provide a reason if the value is higher than 0. Return the results as a JSON object with both ratings and reasons.";
 
         $endpoint = 'https://api.openai.com/v1/chat/completions';
 
@@ -151,16 +151,6 @@ class ImageApi extends \ForumCopilot\Base\BaseApi
                     'parameters' => [
                         'type' => 'object',
                         'properties' => [
-//                            'prof' => [
-//                                'type' => 'integer',
-//                                'minimum' => 0,
-//                                'maximum' => 4,
-//                                'description' => 'Profanity or vulgar language'
-//                            ],
-//                            'prof_reason' => [
-//                                'type' => 'string',
-//                                'description' => 'Specify the content of profanity or vulgar language rating'
-//                            ],
                             'nude' => [
                                 'type' => 'integer',
                                 'minimum' => 0,
@@ -171,36 +161,10 @@ class ImageApi extends \ForumCopilot\Base\BaseApi
                                 'type' => 'string',
                                 'description' => 'Specify the content of nudity or sexually explicit content rating'
                             ],
-//                            'viol' => [
-//                                'type' => 'integer',
-//                                'minimum' => 0,
-//                                'maximum' => 4,
-//                                'description' => 'Graphic violence or gore'
-//                            ],
-//                            'viol_reason' => [
-//                                'type' => 'string',
-//                                'description' => 'Specify the content of graphic violence or gore rating'
-//                            ],
-//                            'off' => [
-//                                'type' => 'integer',
-//                                'minimum' => 0,
-//                                'maximum' => 4,
-//                                'description' => 'Inappropriate or offensive imagery'
-//                            ],
-//                            'off_reason' => [
-//                                'type' => 'string',
-//                                'description' => 'Specify the content of inappropriate or offensive imagery rating'
-//                            ]
                         ],
                         'required' => [
-//                            'prof',
-//                            'prof_reason',
                             'nude',
                             'nude_reason',
-//                            'viol',
-//                            'viol_reason',
-//                            'off',
-//                            'off_reason'
                         ]
                     ]
                 ]
@@ -221,15 +185,6 @@ class ImageApi extends \ForumCopilot\Base\BaseApi
             $highestValue = 0;
             $nsfwReason = '';
 
-//            $result->prof = $arguments->prof;
-//            if ($arguments->prof > 0) {
-//                $result->prof_reason = $arguments->prof_reason;
-//                if ($arguments->prof > $highestValue) {
-//                    $highestValue = $arguments->prof;
-//                    $nsfwReason = $arguments->prof_reason;
-//                }
-//            }
-
             $result->nude = $arguments->nude;
             if ($arguments->nude > 0) {
                 $result->nude_reason = $arguments->nude_reason;
@@ -238,24 +193,6 @@ class ImageApi extends \ForumCopilot\Base\BaseApi
                     $nsfwReason = $arguments->nude_reason;
                 }
             }
-
-//            $result->viol = $arguments->viol;
-//            if ($arguments->viol > 0) {
-//                $result->viol_reason = $arguments->viol_reason;
-//                if ($arguments->viol > $highestValue) {
-//                    $highestValue = $arguments->viol;
-//                    $nsfwReason = $arguments->viol_reason;
-//                }
-//            }
-
-//            $result->off = $arguments->off;
-//            if ($arguments->off > 0) {
-//                $result->off_reason = $arguments->off_reason;
-//                if ($arguments->off > $highestValue) {
-//                    $highestValue = $arguments->off;
-//                    $nsfwReason = $arguments->off_reason;
-//                }
-//            }
 
             if ($highestValue > 3) {
                 $result->nsfw = true;
