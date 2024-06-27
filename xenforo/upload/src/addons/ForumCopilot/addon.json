@@ -1,9 +1,9 @@
 {
     "legacy_addon_id": "ForumCopilot",
-    "title": "Forum Copilot - AI Moderation",
+    "title": "Forum Copilot - Automatic Community Management with AI",
     "description": "Forum Copilot moderate both user generated text content and images by flagging problemic content and prevent NSFW images from being uploaded.",
     "version_id": 1,
-    "version_string": "1.0.0 Alpha",
+    "version_string": "1.0.1 Alpha",
     "dev": "ForumCopilot.com",
     "dev_url": "https://forumcopilot.com",
     "faq_url": "https://forumcopilot.com",

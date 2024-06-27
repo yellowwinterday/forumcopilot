@@ -21,6 +21,6 @@
   
   <phrase title="option_group.fc_group_general" version_id="10" version_string="1.0"><![CDATA[General Settings]]></phrase>
   <phrase title="option_group.fc_group_textmod" version_id="10" version_string="1.0"><![CDATA[Text Moderation]]></phrase>
-  <phrase title="option_group.fc_group_imagemod" version_id="10" version_string="1.0"><![CDATA[Image Noderation]]></phrase>
+  <phrase title="option_group.fc_group_imagemode" version_id="10" version_string="1.0"><![CDATA[Image Noderation]]></phrase>
   <phrase title="option_group_description.fc_group_general" version_id="10" version_string="1.0"><![CDATA[]]></phrase>
 </phrases>

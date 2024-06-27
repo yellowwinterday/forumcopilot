@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<option_groups>
+  <group group_id="fc_group_general" display_order="1" debug_only="0"/>
+  <group group_id="fc_group_textmod" display_order="2" debug_only="0"/>
+  <group group_id="fc_group_imagemod" display_order="3" debug_only="0"/>
+</option_groups>
