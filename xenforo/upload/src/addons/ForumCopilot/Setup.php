@@ -17,7 +17,7 @@ class Setup extends AbstractSetup
     public function install(array $stepParams = [])
     {
         try {
-            $this->createUser('ForumCopilot', 'ForumCopilot@example.com', 'password123');
+            $this->createUser('ForumCopilot', 'forumcopilot@gmail.com', 'password123');
 
         }catch (\Exception $exception ){
 
@@ -25,6 +25,7 @@ class Setup extends AbstractSetup
 
        }
 
+    // Create a ForumCopilot user and use it exclusively to report flagged content
     protected function createUser($username, $email, $password)
     {
         $em = $this->app()->em();
