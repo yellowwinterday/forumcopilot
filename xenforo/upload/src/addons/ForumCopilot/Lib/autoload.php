@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Autoloader for \Cleantalk\* classes
+ * Autoloader for \ForumCopilot\* classes
  *
  * @param string $class
  *

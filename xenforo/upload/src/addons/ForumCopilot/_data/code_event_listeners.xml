@@ -1,2 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-<code_event_listeners/>
+<code_event_listeners>
+  <listener event_id="entity_post_save" execute_order="10" callback_class="ForumCopilot\Listener" callback_method="postSave" active="1" hint="XF\Entity\Post" description="Moderate posts based on content"/>
+</code_event_listeners>

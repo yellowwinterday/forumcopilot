@@ -1,6 +1,0 @@
-{
-    "from_class": "XF\\Attachment\\Manipulator",
-    "to_class": "ForumCopilot\\XF\\Attachment\\Manipulator",
-    "execute_order": 10,
-    "active": true
-}

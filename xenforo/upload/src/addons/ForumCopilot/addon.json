@@ -10,5 +10,8 @@
     "support_url": "https://forumcopilot.com",
     "extra_urls": [],
     "require": [],
-    "icon": ""
+    "icon": "",
+    "class_extensions": {
+        "XF\\Job\\Manager": "ForumCopilot\\XF\\Job\\Manager"
+    }
 }

@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<class_extensions>
-  <extension from_class="XF\Attachment\Manipulator" to_class="ForumCopilot\XF\Attachment\Manipulator" execute_order="10" active="1"/>
-  <extension from_class="XF\Attachment\Post" to_class="ForumCopilot\XF\Attachment\Post" execute_order="10" active="1"/>
-  <extension from_class="XF\Pub\Controller\Forum" to_class="ForumCopilot\XF\Pub\Controller\Forum" execute_order="10" active="1"/>
-  <extension from_class="XF\Pub\Controller\Thread" to_class="ForumCopilot\XF\Pub\Controller\Thread" execute_order="10" active="1"/>
-</class_extensions>
