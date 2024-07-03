@@ -76,7 +76,7 @@ class TextApi extends \ForumCopilot\Base\BaseApi
             $data['reason'] = "The content contains references to " . implode(',', $violated_types) . ".";
         } else {
             // Step 2: Call the Chat API for spam detection
-            $prompt = "You are a moderator on a forum, checking ads. Please only respond with a number from 0 (least) to 4 (most) to indicate the level. Please only rate high value for those content with contact info such as phone numbers or web-links or emails. Please ignore contents without contact info. Please ignore contents shorter than 20 words.";
+            $prompt = "You are a moderator on a forum, checking spam ads. Spam ads are unsolicited, generic, clickbait-filled, often deceptive, and frequently link to suspicious websites with too-good-to-be-true offers. You only respond with a number from 0 (least) to 4 (most) to indicate the level. Please ignore contents without contact info.";
 
             $chatData = [
                 'model' => 'gpt-4',
