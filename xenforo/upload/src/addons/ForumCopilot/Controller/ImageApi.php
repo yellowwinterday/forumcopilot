@@ -211,4 +211,112 @@ class ImageApi extends \ForumCopilot\Base\BaseApi
             return $result;
         }
     }
+
+    public function callGPT4WithImages($imageUrls)
+    {
+        $prompt = "Check and rate the image in the following categories: nude (Nudity or sexually explicit content). For each category, provide a reason if the value is higher than 0. Return the results as a JSON object with both ratings and reasons.";
+
+        $endpoint = 'https://api.openai.com/v1/chat/completions';
+
+        $content = [
+            ['type' => 'text', 'text' => $prompt]
+        ];
+        foreach ($imageUrls as $imageUrl) {
+            $content[] = ['type' => 'image_url', 'image_url' => ['url' => $imageUrl]];
+        }
+
+        $data = [
+            'model' => 'gpt-4o',
+            'messages' => [
+                [
+                    'role' => 'user',
+                    'content' => $content
+                ]
+            ],
+            'functions' => [
+                [
+                    'name' => 'rate_image',
+                    'description' => 'Rate the image in different categories and provide reasons',
+                    'parameters' => [
+                        'type' => 'object',
+                        'properties' => [
+                            'images' => [
+                                'type' => 'array',
+                                'items' => [
+                                    'type' => 'object',
+                                    'properties' => [
+                                        'nude' => [
+                                            'type' => 'integer',
+                                            'minimum' => 0,
+                                            'maximum' => 4,
+                                            'description' => 'Nudity or sexually explicit content'
+                                        ],
+                                        'nude_reason' => [
+                                            'type' => 'string',
+                                            'description' => 'Specify the content of nudity or sexually explicit content rating'
+                                        ]
+                                    ],
+                                    'required' => [
+                                        'nude',
+                                        'nude_reason'
+                                    ]
+                                ]
+                            ]
+                        ],
+                        'required' => ['images']
+                    ]
+
+                ]
+            ],
+            'function_call' => ['name' => 'rate_image'],
+            'max_tokens' => 300,
+            'temperature' => 0,
+            'top_p' => 1
+        ];
+
+        $response = $this->sendRequest($endpoint, $data);
+        $result = new \stdClass();
+        $result->status = 0;
+        $result->reason = "";
+
+        if (isset($response['choices'][0]['message']['function_call']['arguments'])) {
+            $arguments = json_decode($response['choices'][0]['message']['function_call']['arguments']);
+            $results =[];
+
+            foreach ($arguments->images as $imageRating) {
+                $result = new \stdClass();
+                $highestValue = 0;
+                $nsfwReason = '';
+
+                $result->nude = $imageRating->nude;
+                if ($imageRating->nude > 0) {
+                    $result->nude_reason = $imageRating->nude_reason;
+                    if ($imageRating->nude > $highestValue) {
+                        $highestValue = $imageRating->nude;
+                        $nsfwReason = $imageRating->nude_reason;
+                    }
+                }
+
+                if ($highestValue > 3) {
+                    $result->nsfw = true;
+                    $result->nsfw_reason = $nsfwReason;
+                } else {
+                    $result->nsfw = false;
+                    $result->nsfw_reason = "";
+                }
+
+                $results[] = $result;
+
+            }
+
+            return $results;
+        } else {
+            $result->status = 1;
+            $result->reason = "Invalid API response.";
+            $result->nsfw = true;
+            $result->nsfw_reason = "";
+            $results[] = $result;
+            return $results;
+        }
+    }
 }
