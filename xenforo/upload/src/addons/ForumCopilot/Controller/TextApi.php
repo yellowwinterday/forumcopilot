@@ -11,6 +11,19 @@ class TextApi extends \ForumCopilot\Base\BaseApi
         $moderationEndpoint = 'https://api.openai.com/v1/moderations';
         $chatEndpoint = 'https://api.openai.com/v1/chat/completions';
 
+        $data = [
+            'spam' => 0,
+            'hate' => 0,
+            'harrass' => 0,
+            'harm' => 0,
+            'sex' => 0,
+            'violence' => 0,
+            'nsfw' => 0,
+            'reason' => "",
+            'status' => 0
+        ];
+        
+/*
         // Step 1: Call the Moderation API
         $moderationData = [
 //            'model' => 'text-moderation-latest',
@@ -27,17 +40,7 @@ class TextApi extends \ForumCopilot\Base\BaseApi
             ];
         }
 
-        $data = [
-            'spam' => 0,
-            'hate' => 0,
-            'harrass' => 0,
-            'harm' => 0,
-            'sex' => 0,
-            'violence' => 0,
-            'nsfw' => 0,
-            'reason' => "",
-            'status' => 0
-        ];
+     
 
         $violated_types = [];
         $highestValue = 0;
@@ -75,11 +78,13 @@ class TextApi extends \ForumCopilot\Base\BaseApi
         if (!$moderation_bypassed) {
             $data['reason'] = "The content contains references to " . implode(',', $violated_types) . ".";
         } else {
+
+        */
             // Step 2: Call the Chat API for spam detection
             $prompt = "You are a moderator on a forum, checking spam ads. Spam ads are unsolicited, generic, clickbait-filled, often deceptive, and frequently link to suspicious websites with too-good-to-be-true offers. You only respond with a number from 0 (least) to 4 (most) to indicate the level. Please ignore contents without contact info.";
 
             $chatData = [
-                'model' => 'gpt-4',
+                'model' => 'gpt-4o',
                 'messages' => [
                     [
                         'role' => 'system',
@@ -114,7 +119,8 @@ class TextApi extends \ForumCopilot\Base\BaseApi
                     'reason' => "Chat API response error."
                 ];
             }
-        }
+
+        //}
 
         return $data;
     }

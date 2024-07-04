@@ -110,8 +110,7 @@ class ImageApi extends \ForumCopilot\Base\BaseApi
                     $publicUrl = $protocol . $host . '/compressed_' . $randomFileName;
 
                     // Call GPT-4 API
-//                        $result = $this->callGPT4WithImage($publicUrl);
-                    $result = $this->callGPT4WithImage("https://endpoint.forumcopilot.com/uploads/46bd5cbbd1247e30.png");
+                    $result = $this->callGPT4WithImage($publicUrl);
 
                     // Delete the local saved resized image
                     if (file_exists($savePath)) {
