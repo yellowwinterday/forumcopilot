@@ -83,6 +83,12 @@ class TextApi extends \ForumCopilot\Base\BaseApi
             // Step 2: Call the Chat API for spam detection
             $prompt = "You are a moderator on a forum, checking spam ads. Spam ads are unsolicited, generic, clickbait-filled, often deceptive, and frequently link to suspicious websites with too-good-to-be-true offers. You only respond with a number from 0 (least) to 4 (most) to indicate the level. Please ignore contents without contact info.";
 
+            //Updated prompt to include pure contact information as spam, for newly registered members only.
+            $visitor = \XF::visitor();
+            if ($visitor["message_count"] < 5){
+                $prompt = "You are a moderator on a forum, checking spam ads. Spam ads are unsolicited, generic, clickbait-filled, often deceptive, and frequently link to suspicious websites with too-good-to-be-true offers. Messages that only contain contact information should also be flagged as spam. You only respond with a number from 0 (least) to 4 (most) to indicate the level. Please ignore contents without contact info.";
+            }
+
             $chatData = [
                 'model' => 'gpt-4o',
                 'messages' => [
