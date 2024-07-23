@@ -33,7 +33,7 @@ class ModeratePost extends \XF\Job\AbstractJob
     private static function shouldModeratePost(\XF\Entity\Post $post)
     {
         $textApi = new TextApi(FCConfig::apikey());
-        $result = $textApi->callGPT4WithContent($post->message);
+        $result = $textApi->callGPT4WithContent($post->message, $post->User->message_count < 5);
         if($result['status'] === 0 && $result['reason']){
             return $result['reason'];
         }

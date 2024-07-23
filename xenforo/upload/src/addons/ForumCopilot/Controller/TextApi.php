@@ -6,7 +6,7 @@ require_once \XF::getRootDirectory().'/src/addons/ForumCopilot/Lib/autoload.php'
 
 class TextApi extends \ForumCopilot\Base\BaseApi
 {
-    public function callGPT4WithContent($content)
+    public function callGPT4WithContent($content, $isNewUser)
     {
         $moderationEndpoint = 'https://api.openai.com/v1/moderations';
         $chatEndpoint = 'https://api.openai.com/v1/chat/completions';
@@ -83,7 +83,13 @@ class TextApi extends \ForumCopilot\Base\BaseApi
             // Step 2: Call the Chat API for spam detection
             $prompt = "You are a moderator on a forum, checking spam ads. Spam ads are unsolicited, generic, clickbait-filled, often deceptive, and frequently link to suspicious websites with too-good-to-be-true offers. You only respond with a number from 0 (least) to 4 (most) to indicate the level. Please ignore contents without contact info.";
 
+            //Updated prompt to include pure contact information as spam, for newly registered members only.
+            if ($isNewUser){
+                $prompt = "You are a moderator on a forum, checking spam ads. Spam ads are unsolicited, generic, clickbait-filled, often deceptive, and frequently link to suspicious websites with too-good-to-be-true offers. Messages that only contain contact information should also be flagged as spam. You only respond with a number from 0 (least) to 4 (most) to indicate the level. Please ignore contents without contact info.";
+            }
+
             $chatData = [
+
                 'model' => 'gpt-4o',
                 'messages' => [
                     [
